@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the Footer component should correctly render a footer element 1`] = `
+<footer>
+  <div>
+    I am a footer.
+  </div>
+</footer>
+`;
