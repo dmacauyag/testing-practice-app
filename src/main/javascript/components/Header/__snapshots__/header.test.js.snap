@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the Header component should correctly render a header element 1`] = `
+<header>
+  <div>
+    I am a header.
+  </div>
+</header>
+`;
