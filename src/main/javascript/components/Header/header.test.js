@@ -1,5 +1,5 @@
+import Header from './Header'
 import React from 'react'
-import Header from './header'
 import renderer from 'react-test-renderer'
 
 describe('the Header component', () => {

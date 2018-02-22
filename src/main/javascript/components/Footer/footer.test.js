@@ -1,5 +1,5 @@
+import Footer from './Footer'
 import React from 'react'
-import Footer from './footer'
 import renderer from 'react-test-renderer'
 
 describe('the Footer component', () => {

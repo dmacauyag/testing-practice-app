@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import Footer from './main/javascript/components/Footer/footer'
-import Header from './main/javascript/components/Header/header'
 import './App.css'
 import axios from 'axios'
+import Footer from './main/javascript/components/Footer/Footer'
+import Header from './main/javascript/components/Header/Header'
+import React, { Component } from 'react'
 
-const fourSquareVenuesBaseURL = 'https://api.foursquare.com/v2/venues/'
 const CLIENT_ID = 'CCJHDUOWC2UBUZ01HKXPCEY255MVOMTEK44ESR4BQSJGSBLT'
 const CLIENT_SECRET = 'L1DW01OZLI54KILXSB4V0SXXZXW5QZX2REWRN0YOEB1CITQF'
+const fourSquareVenuesBaseURL = 'https://api.foursquare.com/v2/venues'
 
 class App extends Component {
   constructor(props) {
