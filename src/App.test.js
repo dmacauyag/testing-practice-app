@@ -21,15 +21,20 @@ describe('App component', () => {
     })
 
     it('returns data when getFourSquareAPIVenues is called', () => {
-      // TODO: Find solution for this test
-      // let mock = new MockAdapter(axios)
-      // const data = { response: true }
-      // mock.onGet('https://api.foursquare.com/v2/venues/explore').reply(200, data)
-      //
-      // wrapper.instance().getFourSquareAPIVenues('test').then(response => {
-      //   expect(response).toEqual(data)
-      //   done()
-      // })
+      let mockAxios = new MockAdapter(axios)
+      const mockData = {
+        response: {
+          groups: [
+            { items: {} }
+          ]
+        }
+      }
+
+      mockAxios.onGet('https://api.foursquare.com/v2/venues/explore').reply(200, mockData)
+
+      wrapper.instance().getFourSquareAPIVenues('test').then(response => {
+        expect(response.data).toEqual(mockData)
+      })
     })
   })
 })
