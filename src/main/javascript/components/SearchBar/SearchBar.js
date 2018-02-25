@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class SearchBar extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)

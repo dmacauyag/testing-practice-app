@@ -3,6 +3,7 @@ import axios from 'axios'
 import Footer from './main/javascript/components/Footer/Footer'
 import Header from './main/javascript/components/Header/Header'
 import SearchBar from './main/javascript/components/SearchBar/SearchBar'
+import VenuesList from './main/javascript/components/VenuesList/VenuesList'
 import React, { Component } from 'react'
 
 const CLIENT_ID = 'CCJHDUOWC2UBUZ01HKXPCEY255MVOMTEK44ESR4BQSJGSBLT'
@@ -14,8 +15,10 @@ class App extends Component {
     super(props)
 
     this.getFourSquareAPIVenues = this.getFourSquareAPIVenues.bind(this)
+    this.setSelectedVenueState = this.setSelectedVenueState.bind(this)
     this.state = {
-      venues: []
+      venues: [],
+      selectedVenue: null
     }
   }
 
@@ -41,6 +44,12 @@ class App extends Component {
     })
   }
 
+  setSelectedVenueState(venueId) {
+    this.setState({
+      selectedVenue: venueId
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -48,6 +57,10 @@ class App extends Component {
         <div>
           <SearchBar
             onSubmitSearch={searchTerm => this.getFourSquareAPIVenues(searchTerm)}
+          />
+          <VenuesList
+            onVenueSelect={venueId => this.setSelectedVenueState(venueId)}
+            venues={this.state.venues}
           />
         </div>
         <Footer />
