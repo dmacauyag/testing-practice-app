@@ -25,7 +25,7 @@ describe('the SearchBar component', () => {
         target: {value: 'test change'}
       }
       wrapper.find('input').simulate('change', mockValue)
-      expect(wrapper.instance().state.searchTerm === mockValue.target.value)
+      expect(wrapper.instance().state.searchTerm).toBe(mockValue.target.value)
     })
   })
 

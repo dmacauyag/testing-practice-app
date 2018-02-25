@@ -37,4 +37,20 @@ describe('App component', () => {
       })
     })
   })
+
+  describe('setSelectedVenueState method', () => {
+    const wrapper = shallow(<App />)
+
+    it('should exist as a function', () => {
+      expect(wrapper.instance().setSelectedVenueState).toBeDefined()
+      expect(typeof wrapper.instance().setSelectedVenueState).toBe('function')
+    })
+
+    it('should correctly set the selectedVenue state', () => {
+      const mockId = 1
+
+      wrapper.instance().setSelectedVenueState(mockId)
+      expect(wrapper.instance().state.selectedVenue).toBe(mockId)
+    })
+  })
 })
