@@ -13,6 +13,7 @@ class App extends Component {
   constructor(props) {
     super(props)
 
+    this.getFourSquareAPIVenues = this.getFourSquareAPIVenues.bind(this)
     this.state = {
       venues: []
     }
@@ -36,7 +37,7 @@ class App extends Component {
       return response
     })
     .catch((error) => {
-      console.error(error);
+      console.error(error)
     })
   }
 
@@ -51,8 +52,8 @@ class App extends Component {
         </div>
         <Footer />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

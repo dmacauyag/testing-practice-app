@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the SearchBar component should correctly render the SearchBar component 1`] = `
+<div
+  className="search-bar"
+>
+  <input
+    onChange={[Function]}
+    onKeyPress={[Function]}
+    value=""
+  />
+</div>
+`;
