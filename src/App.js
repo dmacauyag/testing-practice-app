@@ -46,7 +46,7 @@ class App extends Component {
         <Header />
         <div>
           <SearchBar
-            onSearchTermChange={searchTerm => this.getFourSquareAPIVenues(searchTerm)}
+            onSubmitSearch={searchTerm => this.getFourSquareAPIVenues(searchTerm)}
           />
         </div>
         <Footer />
