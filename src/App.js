@@ -2,6 +2,7 @@ import './App.css'
 import axios from 'axios'
 import Footer from './main/javascript/components/Footer/Footer'
 import Header from './main/javascript/components/Header/Header'
+import SearchBar from './main/javascript/components/SearchBar/SearchBar'
 import React, { Component } from 'react'
 
 const CLIENT_ID = 'CCJHDUOWC2UBUZ01HKXPCEY255MVOMTEK44ESR4BQSJGSBLT'
@@ -43,7 +44,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div>Main Content</div>
+        <div>
+          <SearchBar
+            onSearchTermChange={searchTerm => this.getFourSquareAPIVenues(searchTerm)}
+          />
+        </div>
         <Footer />
       </div>
     );
