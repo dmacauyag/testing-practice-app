@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the VenuesList component should correctly render the VenuesList component 1`] = `
+<div
+  className="venues-list"
+>
+  <ul
+    className="venues-list__group"
+  >
+    <li
+      className="venues-list__item"
+      onClick={[Function]}
+    />
+  </ul>
+</div>
+`;
