@@ -4,6 +4,7 @@ import Footer from './main/javascript/components/Footer/Footer'
 import Header from './main/javascript/components/Header/Header'
 import SearchBar from './main/javascript/components/SearchBar/SearchBar'
 import VenuesList from './main/javascript/components/VenuesList/VenuesList'
+import VenueListDetail from './main/javascript/components/VenueListDetail/VenueListDetail'
 import React, { Component } from 'react'
 
 const CLIENT_ID = 'CCJHDUOWC2UBUZ01HKXPCEY255MVOMTEK44ESR4BQSJGSBLT'
@@ -35,7 +36,8 @@ class App extends Component {
     })
     .then((response) => {
       this.setState({
-        venues: response.data.response.groups[0].items
+        venues: response.data.response.groups[0].items,
+        selectedVenue: null
       })
       return response
     })
@@ -44,9 +46,26 @@ class App extends Component {
     })
   }
 
-  setSelectedVenueState(venueId) {
+  getFourSquareAPIVenueDetails(venueId) {
+    return axios.get(`${fourSquareVenuesBaseURL}/${venueId}`, {
+      params: {
+        client_id: `${CLIENT_ID}`,
+        client_secret: `${CLIENT_SECRET}`,
+        v: '20170801',
+      }
+    })
+    .then((response) => {
+      this.setSelectedVenueState(response.data.response.venue)
+      return response
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
+  setSelectedVenueState(venue) {
     this.setState({
-      selectedVenue: venueId
+      selectedVenue: venue
     })
   }
 
@@ -55,11 +74,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <div>
+          <VenueListDetail
+            venue={this.state.selectedVenue}
+          />
           <SearchBar
             onSubmitSearch={searchTerm => this.getFourSquareAPIVenues(searchTerm)}
           />
           <VenuesList
-            onVenueSelect={venueId => this.setSelectedVenueState(venueId)}
+            onVenueSelect={venueId => this.getFourSquareAPIVenueDetails(venueId)}
             venues={this.state.venues}
           />
         </div>
