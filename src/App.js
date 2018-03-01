@@ -7,8 +7,8 @@ import VenuesList from './main/javascript/components/VenuesList/VenuesList'
 import VenueListDetail from './main/javascript/components/VenueListDetail/VenueListDetail'
 import React, { Component } from 'react'
 
-const CLIENT_ID = 'CCJHDUOWC2UBUZ01HKXPCEY255MVOMTEK44ESR4BQSJGSBLT'
-const CLIENT_SECRET = 'L1DW01OZLI54KILXSB4V0SXXZXW5QZX2REWRN0YOEB1CITQF'
+const CLIENT_ID = process.env.CLIENT_ID
+const CLIENT_SECRET = process.env.CLIENT_SECRET
 const fourSquareVenuesBaseURL = 'https://api.foursquare.com/v2/venues'
 
 class App extends Component {
