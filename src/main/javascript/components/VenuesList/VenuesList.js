@@ -2,11 +2,11 @@ import React from 'react'
 import VenueListItem from '../VenueListItem/VenueListItem'
 
 const VenuesList = (props) => {
-  const venueItems = props.venues.map((venue) => {
+  const venueItems = props.venues.map((venue, index) => {
     return (
       <VenueListItem
+        key={index}
         venue={venue.venue}
-        key={venue.venue.id}
         onVenueSelect={props.onVenueSelect}
       />
     )
