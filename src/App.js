@@ -7,8 +7,8 @@ import VenuesList from './main/javascript/components/VenuesList/VenuesList'
 import VenueListDetail from './main/javascript/components/VenueListDetail/VenueListDetail'
 import React, { Component } from 'react'
 
-const CLIENT_ID = process.env.CLIENT_ID
-const CLIENT_SECRET = process.env.CLIENT_SECRET
+const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID
+const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
 const fourSquareVenuesBaseURL = 'https://api.foursquare.com/v2/venues'
 
 class App extends Component {
@@ -26,8 +26,8 @@ class App extends Component {
   getFourSquareAPIVenues(query) {
     return axios.get(`${fourSquareVenuesBaseURL}/explore`, {
       params: {
-        client_id: `${CLIENT_ID}`,
-        client_secret: `${CLIENT_SECRET}`,
+        client_id: `${REACT_APP_CLIENT_ID}`,
+        client_secret: `${REACT_APP_CLIENT_SECRET}`,
         ll: '40.7243,-74.0018',
         query: `${query}`,
         v: '20170801',
@@ -49,8 +49,8 @@ class App extends Component {
   getFourSquareAPIVenueDetails(venueId) {
     return axios.get(`${fourSquareVenuesBaseURL}/${venueId}`, {
       params: {
-        client_id: `${CLIENT_ID}`,
-        client_secret: `${CLIENT_SECRET}`,
+        client_id: `${REACT_APP_CLIENT_ID}`,
+        client_secret: `${REACT_APP_CLIENT_SECRET}`,
         v: '20170801',
       }
     })
