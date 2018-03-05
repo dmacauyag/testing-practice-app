@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the VenueListDetail component should correctly render the VenueListDetail component 1`] = `
+<div
+  className="venue-list-detail"
+>
+  <div
+    className="venue-list-detail__image"
+  >
+    <img
+      alt="test name"
+      src="test prefix100x200test suffix"
+    />
+  </div>
+  <div
+    className="venue-list-detail__information"
+  >
+    <div
+      className="venue-list-detail__information--name"
+    >
+      test name
+    </div>
+    <div>
+      test description
+    </div>
+    <div
+      className="venue-list-detail__information--address"
+    >
+      <div>
+        test location
+      </div>
+    </div>
+    <a
+      href="test url"
+      target="_blank"
+    >
+      Visit 
+      test name
+    </a>
+  </div>
+</div>
+`;

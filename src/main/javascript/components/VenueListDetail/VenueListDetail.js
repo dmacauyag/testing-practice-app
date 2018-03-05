@@ -7,8 +7,8 @@ const VenueListDetail = ({venue}) => {
     )
   }
 
-  const venueAddress = venue.location.formattedAddress.map((line) => {
-    return (<div>{line}</div>)
+  const venueAddress = venue.location.formattedAddress.map((line, index) => {
+    return (<div key={index}>{line}</div>)
   })
   const venueDescription = venue.description ? venue.description : ''
   const venueImageUrl = venue.bestPhoto.prefix + venue.bestPhoto.width + 'x' + venue.bestPhoto.height + venue.bestPhoto.suffix
