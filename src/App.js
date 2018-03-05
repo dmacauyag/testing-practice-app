@@ -16,6 +16,7 @@ class App extends Component {
     super(props)
 
     this.getFourSquareAPIVenues = this.getFourSquareAPIVenues.bind(this)
+    this.getFourSquareAPIVenueDetails = this.getFourSquareAPIVenueDetails.bind(this)
     this.setSelectedVenueState = this.setSelectedVenueState.bind(this)
     this.state = {
       venues: [],

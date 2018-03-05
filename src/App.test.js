@@ -6,6 +6,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 describe('App component', () => {
+  const mockAxios = new MockAdapter(axios)
+  const mockResponse = {
+    response: {
+      groups: [
+        { items: {} }
+      ],
+      venue: {}
+    }
+  }
+  const wrapper = shallow(<App />)
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<App />, div);
@@ -13,17 +24,8 @@ describe('App component', () => {
   })
 
   describe('getFourSquareAPIVenues method', () => {
-    const wrapper = shallow(<App />)
-    const mockAxios = new MockAdapter(axios)
-    const mockData = {
-      response: {
-        groups: [
-          { items: {} }
-        ]
-      }
-    }
 
-    mockAxios.onGet('https://api.foursquare.com/v2/venues/explore').reply(200, mockData)
+    mockAxios.onGet('https://api.foursquare.com/v2/venues/explore').reply(200, mockResponse)
 
     it('should exist as a function', () => {
       expect(wrapper.instance().getFourSquareAPIVenues).toBeDefined()
@@ -32,14 +34,37 @@ describe('App component', () => {
 
     it('returns data when getFourSquareAPIVenues is called', () => {
       wrapper.instance().getFourSquareAPIVenues('test').then(response => {
-        expect(response.data).toEqual(mockData)
+        expect(response.data).toEqual(mockResponse)
       })
     })
 
     it('should correctly set the venues and selectedVenue state after response is received', () => {
       wrapper.instance().getFourSquareAPIVenues('test')
       expect(wrapper.instance().state.selectedVenue).toEqual(null)
-      expect(wrapper.instance().state.venues).toEqual(mockData.response.groups[0].items)
+      expect(wrapper.instance().state.venues).toEqual(mockResponse.response.groups[0].items)
+    })
+  })
+
+  describe('getFourSquareAPIVenueDetails method', () => {
+    const setSelectedVenueStateSpy = jest.spyOn(wrapper.instance(), 'setSelectedVenueState')
+    wrapper.update()
+
+    mockAxios.onGet('https://api.foursquare.com/v2/venues/1234').reply(200, mockResponse)
+
+    it('should exist as a function', () => {
+      expect(wrapper.instance().getFourSquareAPIVenueDetails).toBeDefined()
+      expect(typeof wrapper.instance().getFourSquareAPIVenueDetails).toBe('function')
+    })
+
+    it('returns data when getFourSquareAPIVenues is called', () => {
+      wrapper.instance().getFourSquareAPIVenueDetails(1234).then(response => {
+        expect(response.data).toEqual(mockResponse)
+      })
+    })
+
+    it('should call the setSelectedVenueState method with the proper arguments after response is received', () => {
+      wrapper.instance().getFourSquareAPIVenueDetails(1234)
+      expect(setSelectedVenueStateSpy).toHaveBeenCalled()
     })
   })
 
