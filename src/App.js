@@ -1,7 +1,5 @@
 import './App.css'
 import axios from 'axios'
-import Footer from './main/javascript/components/Footer/Footer'
-import Header from './main/javascript/components/Header/Header'
 import SearchBar from './main/javascript/components/SearchBar/SearchBar'
 import VenuesList from './main/javascript/components/VenuesList/VenuesList'
 import VenueListDetail from './main/javascript/components/VenueListDetail/VenueListDetail'
@@ -73,7 +71,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
         <div>
           <VenueListDetail
             venue={this.state.selectedVenue}
@@ -86,7 +83,6 @@ class App extends Component {
             venues={this.state.venues}
           />
         </div>
-        <Footer />
       </div>
     )
   }
