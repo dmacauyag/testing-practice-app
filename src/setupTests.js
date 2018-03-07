@@ -7,4 +7,9 @@ const mockGeolocation = {
   getCurrentPosition: jest.fn()
 }
 
+const mockConsole = {
+  error: jest.fn()
+}
+
 global.navigator.geolocation = mockGeolocation
+global.console = mockConsole

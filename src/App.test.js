@@ -43,6 +43,14 @@ describe('App component', () => {
       expect(wrapper.instance().state.selectedVenue).toEqual(null)
       expect(wrapper.instance().state.venues).toEqual(mockResponse.response.groups[0].items)
     })
+
+    it('should console error on a failed request', async () => {
+      const consoleErrorSpy = jest.spyOn(global.console, 'error')
+      mockAxios.onGet('https://api.foursquare.com/v2/venues/explore').networkError()
+
+      await wrapper.instance().getFourSquareAPIVenues('test')
+      expect(consoleErrorSpy).toHaveBeenCalled()
+    })
   })
 
   describe('getFourSquareAPIVenueDetails method', () => {
@@ -65,6 +73,14 @@ describe('App component', () => {
     it('should call the setSelectedVenueState method with the proper arguments after response is received', () => {
       wrapper.instance().getFourSquareAPIVenueDetails(1234)
       expect(setSelectedVenueStateSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should console error on a failed request', async () => {
+      const consoleErrorSpy = jest.spyOn(global.console, 'error')
+      mockAxios.onGet('https://api.foursquare.com/v2/venues/1234').networkError()
+
+      await wrapper.instance().getFourSquareAPIVenueDetails(1234)
+      expect(consoleErrorSpy).toHaveBeenCalled()
     })
   })
 
