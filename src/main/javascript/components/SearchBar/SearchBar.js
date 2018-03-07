@@ -1,4 +1,6 @@
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import React, { Component } from 'react'
+import TextField from 'material-ui/TextField'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -13,13 +15,17 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar">
-        <input
-          value = {this.state.searchTerm}
-          onChange = {event => this.handleInputChange(event)}
-          onKeyPress = {event => this.handleKeyPress(event)}
-        />
-      </div>
+      <MuiThemeProvider>
+        <div className="search-bar">
+          <TextField
+            id="search-bar__text-field"
+            hintText="Search for venues"
+            value = {this.state.searchTerm}
+            onChange = {event => this.handleInputChange(event)}
+            onKeyPress = {event => this.handleKeyPress(event)}
+          />
+        </div>
+      </MuiThemeProvider>
     )
   }
 
