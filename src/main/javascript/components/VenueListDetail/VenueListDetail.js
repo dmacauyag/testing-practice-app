@@ -21,22 +21,24 @@ const VenueListDetail = ({venue}) => {
 
   return (
     <MuiThemeProvider>
-      <Card>
-        <CardMedia
-          overlay={<CardTitle title={venueName} subtitle={venueAddress} />}
-        >
-          <img src={venueImageUrl} alt={venueName} />
-        </CardMedia>
-        <CardTitle title={venueName} subtitle={venueAddress} />
-        <CardText>{venueDescription}</CardText>
-        <CardActions>
-          <FlatButton
-            label={venueUrlButtonLabel}
-            primary={true}
-            href={venueUrl}
-          />
-        </CardActions>
-      </Card>
+      <div className="venue-list-detail">
+        <Card>
+          <CardMedia
+            overlay={<CardTitle title={venueName} subtitle={venueAddress} />}
+          >
+            <img src={venueImageUrl} alt={venueName} />
+          </CardMedia>
+          <CardTitle title={venueName} subtitle={venueAddress} />
+          <CardText>{venueDescription}</CardText>
+          <CardActions>
+            <FlatButton
+              label={venueUrlButtonLabel}
+              primary={true}
+              href={venueUrl}
+            />
+          </CardActions>
+        </Card>
+      </div>
     </MuiThemeProvider>
   )
 }
