@@ -64,13 +64,11 @@ describe('App component', () => {
 
     it('should call the setSelectedVenueState method with the proper arguments after response is received', () => {
       wrapper.instance().getFourSquareAPIVenueDetails(1234)
-      expect(setSelectedVenueStateSpy).toHaveBeenCalled()
+      expect(setSelectedVenueStateSpy).toHaveBeenCalledTimes(1)
     })
   })
 
   describe('setSelectedVenueState method', () => {
-    const wrapper = shallow(<App />)
-
     it('should exist as a function', () => {
       expect(wrapper.instance().setSelectedVenueState).toBeDefined()
       expect(typeof wrapper.instance().setSelectedVenueState).toBe('function')
@@ -81,6 +79,19 @@ describe('App component', () => {
 
       wrapper.instance().setSelectedVenueState(mockVenue)
       expect(wrapper.instance().state.selectedVenue).toBe(mockVenue)
+    })
+  })
+
+  describe('setBrowserLocation method', () => {
+    it('should exist as a function', () => {
+      expect(wrapper.instance().setBrowserLocation).toBeDefined()
+      expect(typeof wrapper.instance().setBrowserLocation).toBe('function')
+    })
+
+    it('should call the getCurrentPosition method if geolocation is available', () => {
+      const getCurrentPositionSpy = jest.spyOn(navigator.geolocation, 'getCurrentPosition')
+      wrapper.instance().setBrowserLocation()
+      expect(getCurrentPositionSpy).toHaveBeenCalled()
     })
   })
 })

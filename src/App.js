@@ -9,6 +9,8 @@ const REACT_APP_CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 const REACT_APP_CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
 const fourSquareVenuesBaseURL = 'https://api.foursquare.com/v2/venues'
 
+let browserLocation = '40.7243,-74.0018'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -16,9 +18,22 @@ class App extends Component {
     this.getFourSquareAPIVenues = this.getFourSquareAPIVenues.bind(this)
     this.getFourSquareAPIVenueDetails = this.getFourSquareAPIVenueDetails.bind(this)
     this.setSelectedVenueState = this.setSelectedVenueState.bind(this)
+    this.setBrowserLocation = this.setBrowserLocation.bind(this)
     this.state = {
       venues: [],
       selectedVenue: null
+    }
+  }
+
+  componentDidMount() {
+    this.setBrowserLocation()
+  }
+
+  setBrowserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        browserLocation = `${position.coords.latitude},${position.coords.longitude}`
+      })
     }
   }
 
@@ -27,7 +42,7 @@ class App extends Component {
       params: {
         client_id: `${REACT_APP_CLIENT_ID}`,
         client_secret: `${REACT_APP_CLIENT_SECRET}`,
-        ll: '40.7243,-74.0018',
+        ll: `${browserLocation}`,
         query: `${query}`,
         v: '20170801',
         limit: 20

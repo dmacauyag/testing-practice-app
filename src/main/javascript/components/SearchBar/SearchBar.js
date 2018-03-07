@@ -19,7 +19,7 @@ class SearchBar extends Component {
         <div className="search-bar">
           <TextField
             id="search-bar__text-field"
-            hintText="Search for venues"
+            hintText="Search for nearby venues"
             value = {this.state.searchTerm}
             onChange = {event => this.handleInputChange(event)}
             onKeyPress = {event => this.handleKeyPress(event)}

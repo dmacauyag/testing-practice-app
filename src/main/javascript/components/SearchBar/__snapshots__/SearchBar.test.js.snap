@@ -34,7 +34,7 @@ exports[`the SearchBar component should correctly render the SearchBar component
         }
       }
     >
-      Search for venues
+      Search for nearby venues
     </div>
     <input
       disabled={false}
