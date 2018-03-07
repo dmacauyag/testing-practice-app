@@ -26,3 +26,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.venue-list-detail {
+  max-width: 75%;
+  margin: 16px auto;
+}
+
+.venues-list {
+  margin: 0 16px;
+}
