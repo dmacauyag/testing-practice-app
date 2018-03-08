@@ -23,9 +23,7 @@ const VenueListDetail = ({venue}) => {
     <MuiThemeProvider>
       <div className="venue-list-detail">
         <Card>
-          <CardMedia
-            overlay={<CardTitle title={venueName} subtitle={venueAddress} />}
-          >
+          <CardMedia>
             <img src={venueImageUrl} alt={venueName} />
           </CardMedia>
           <CardTitle title={venueName} subtitle={venueAddress} />
