@@ -38,9 +38,8 @@ describe('App component', () => {
       })
     })
 
-    it('should correctly set the venues and selectedVenue state after response is received', () => {
+    it('should correctly set the venues state after response is received', () => {
       wrapper.instance().getFourSquareAPIVenues('test')
-      expect(wrapper.instance().state.selectedVenue).toEqual(null)
       expect(wrapper.instance().state.venues).toEqual(mockResponse.response.groups[0].items)
     })
 
@@ -70,7 +69,7 @@ describe('App component', () => {
       })
     })
 
-    it('should call the setSelectedVenueState method with the proper arguments after response is received', () => {
+    it('should call the setSelectedVenueState method after response is received', () => {
       wrapper.instance().getFourSquareAPIVenueDetails(1234)
       expect(setSelectedVenueStateSpy).toHaveBeenCalledTimes(1)
     })
@@ -81,6 +80,23 @@ describe('App component', () => {
 
       await wrapper.instance().getFourSquareAPIVenueDetails(1234)
       expect(consoleErrorSpy).toHaveBeenCalled()
+    })
+  })
+
+  describe('getFourSquareAPIRandomVenue method', () => {
+    const getFourSquareAPIVenueDetailsSpy = jest.spyOn(wrapper.instance(), 'getFourSquareAPIVenueDetails')
+    wrapper.update()
+
+    mockAxios.onGet('https://api.foursquare.com/v2/venues/explore').reply(200, mockResponse)
+
+    it('should exist as a function', () => {
+      expect(wrapper.instance().getFourSquareAPIRandomVenue).toBeDefined()
+      expect(typeof wrapper.instance().getFourSquareAPIRandomVenue).toBe('function')
+    })
+
+    it('should call the getFourSquareAPIVenueDetails method after response is received', () => {
+      wrapper.instance().getFourSquareAPIRandomVenue()
+      expect(getFourSquareAPIVenueDetailsSpy).toHaveBeenCalled()
     })
   })
 

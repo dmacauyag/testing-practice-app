@@ -17,6 +17,7 @@ class App extends Component {
 
     this.getFourSquareAPIVenues = this.getFourSquareAPIVenues.bind(this)
     this.getFourSquareAPIVenueDetails = this.getFourSquareAPIVenueDetails.bind(this)
+    this.getFourSquareAPIRandomVenue = this.getFourSquareAPIRandomVenue.bind(this)
     this.setSelectedVenueState = this.setSelectedVenueState.bind(this)
     this.setBrowserLocation = this.setBrowserLocation.bind(this)
     this.state = {
@@ -27,6 +28,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setBrowserLocation()
+    this.getFourSquareAPIRandomVenue()
   }
 
   setBrowserLocation() {
@@ -35,6 +37,25 @@ class App extends Component {
         browserLocation = `${position.coords.latitude},${position.coords.longitude}`
       })
     }
+  }
+
+  getFourSquareAPIRandomVenue() {
+    return axios.get(`${fourSquareVenuesBaseURL}/explore`, {
+      params: {
+        client_id: `${REACT_APP_CLIENT_ID}`,
+        client_secret: `${REACT_APP_CLIENT_SECRET}`,
+        near: 'Los Angeles, CA',
+        section: 'topPicks',
+        v: '20170801',
+        limit: 1
+      }
+    })
+    .then((response) => {
+      this.getFourSquareAPIVenueDetails(response.data.response.groups[0].items[0].venue.id)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   }
 
   getFourSquareAPIVenues(query) {
@@ -50,8 +71,7 @@ class App extends Component {
     })
     .then((response) => {
       this.setState({
-        venues: response.data.response.groups[0].items,
-        selectedVenue: null
+        venues: response.data.response.groups[0].items
       })
       return response
     })
