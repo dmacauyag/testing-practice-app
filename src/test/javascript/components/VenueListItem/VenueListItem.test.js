@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import VenueListItem from './VenueListItem'
+import VenueListItem from '../../../../main/javascript/components/VenueListItem/VenueListItem'
 import React from 'react'
 import renderer from 'react-test-renderer'
 

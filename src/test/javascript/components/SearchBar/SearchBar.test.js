@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import SearchBar from './SearchBar'
+import SearchBar from '../../../../main/javascript/components/SearchBar/SearchBar'
 import React from 'react'
 import renderer from 'react-test-renderer'
 
