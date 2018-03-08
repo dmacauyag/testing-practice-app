@@ -18,6 +18,7 @@ class App extends Component {
     this.getFourSquareAPIVenues = this.getFourSquareAPIVenues.bind(this)
     this.getFourSquareAPIVenueDetails = this.getFourSquareAPIVenueDetails.bind(this)
     this.getFourSquareAPIRandomVenue = this.getFourSquareAPIRandomVenue.bind(this)
+    this.handleVenueSelect = this.handleVenueSelect.bind(this)
     this.setSelectedVenueState = this.setSelectedVenueState.bind(this)
     this.setBrowserLocation = this.setBrowserLocation.bind(this)
     this.state = {
@@ -97,6 +98,14 @@ class App extends Component {
     })
   }
 
+  handleVenueSelect(venueId) {
+    this.setState({
+      selectedVenue: null
+    })
+
+    this.getFourSquareAPIVenueDetails(venueId)
+  }
+
   setSelectedVenueState(venue) {
     this.setState({
       selectedVenue: venue
@@ -114,7 +123,7 @@ class App extends Component {
             onSubmitSearch={searchTerm => this.getFourSquareAPIVenues(searchTerm)}
           />
           <VenuesList
-            onVenueSelect={venueId => this.getFourSquareAPIVenueDetails(venueId)}
+            onVenueSelect={venueId => this.handleVenueSelect(venueId)}
             venues={this.state.venues}
           />
         </div>

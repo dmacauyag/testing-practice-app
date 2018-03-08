@@ -100,6 +100,25 @@ describe('App component', () => {
     })
   })
 
+  describe('handleVenueSelect method', () => {
+    const getFourSquareAPIVenueDetailsSpy = jest.spyOn(wrapper.instance(), 'getFourSquareAPIVenueDetails')
+    wrapper.update()
+
+    it('should exist as a function', () => {
+      expect(wrapper.instance().handleVenueSelect).toBeDefined()
+      expect(typeof wrapper.instance().handleVenueSelect).toBe('function')
+    })
+
+    it('should initially set the selectedVenue state to null when called', () => {
+      wrapper.instance().handleVenueSelect(1234)
+      expect(wrapper.instance().state.selectedVenue).toBe(null)
+    })
+
+    it('should call getFourSquareAPIVenueDetailsSpy method with the correct venue id', () => {
+      expect(getFourSquareAPIVenueDetailsSpy).toHaveBeenCalledWith(1234)
+    })
+  })
+
   describe('setSelectedVenueState method', () => {
     it('should exist as a function', () => {
       expect(wrapper.instance().setSelectedVenueState).toBeDefined()
