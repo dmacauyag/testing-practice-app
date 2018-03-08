@@ -6,7 +6,10 @@ import React from 'react'
 const VenueListDetail = ({venue}) => {
   if (!venue) {
     return (
-      <div>VenueListDetail Placeholder...</div>
+      <div className="spinner">
+        <div className="double-bounce1"></div>
+        <div className="double-bounce2"></div>
+      </div>
     )
   }
 
