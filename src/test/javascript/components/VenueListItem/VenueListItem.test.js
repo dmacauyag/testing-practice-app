@@ -9,28 +9,23 @@ describe('the VenueListItem component', () => {
     id: 1234
   }
   const onVenueSelectMock =jest.fn()
+  let wrapper
 
-  it('should correctly render the VenueListItem component', () => {
-    const component = renderer.create(
+  beforeEach(() => {
+    wrapper = shallow(
       <VenueListItem
         venue={mockVenues}
         key={1234}
         onVenueSelect={onVenueSelectMock}
       />
     )
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+  })
+
+  it('should correctly render the VenueListItem component', () => {
+    expect(wrapper).toBeDefined()
   })
 
   describe('VenueListItem onclick', () => {
-    const wrapper = shallow(
-      <VenueListItem
-        venue={mockVenues}
-        key={1234}
-        onVenueSelect={onVenueSelectMock}
-      />
-    )
-
     it('should call the onVenueSelectMock function when an li is clicked', () => {
       wrapper.find('ListItem').simulate('click')
       expect(onVenueSelectMock).toHaveBeenCalledTimes(1)

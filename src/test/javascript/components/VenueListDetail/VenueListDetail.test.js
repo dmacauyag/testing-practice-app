@@ -11,19 +11,17 @@ describe('the VenueListDetail component', () => {
     name: 'test name',
     url: 'test url'
   }
-  const wrapper = shallow(
-    <VenueListDetail
-      venue={mockVenue}
-    />
-  )
+  let wrapper
 
-  it('should correctly render the VenueListDetail component', () => {
-    const component = renderer.create(
+  beforeEach(() => {
+    wrapper = shallow(
       <VenueListDetail
         venue={mockVenue}
       />
     )
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+  })
+
+  it('should correctly render the VenueListDetail component', () => {
+    expect(wrapper).toBeDefined()
   })
 })

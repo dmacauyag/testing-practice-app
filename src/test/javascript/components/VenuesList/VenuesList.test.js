@@ -13,15 +13,18 @@ describe('the VenuesList component', () => {
       onVenueSelect: onVenueSelectMock
     }
   ]
+  let wrapper
 
-  it('should correctly render the VenuesList component', () => {
-    const component = renderer.create(
+  beforeEach(() => {
+    wrapper = shallow(
       <VenuesList
         venues={mockVenues}
         onVenueSelect={setSelectedVenueStateMock}
       />
     )
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+  })
+
+  it('should correctly render the VenuesList component', () => {
+    expect(wrapper).toBeDefined()
   })
 })

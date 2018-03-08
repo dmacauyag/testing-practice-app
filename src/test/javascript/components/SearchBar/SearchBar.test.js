@@ -4,16 +4,17 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 
 describe('the SearchBar component', () => {
+  let wrapper
+
+  beforeEach(() => {
+    wrapper = shallow(<SearchBar />)
+  })
+
   it('should correctly render the SearchBar component', () => {
-    const component = renderer.create(
-      <SearchBar />
-    )
-    let tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(wrapper).toBeDefined()
   })
 
   describe('handleInputChange method', () => {
-    const wrapper = shallow(<SearchBar />)
 
     it('should exist as a function', () => {
       expect(wrapper.instance().handleInputChange).toBeDefined()
