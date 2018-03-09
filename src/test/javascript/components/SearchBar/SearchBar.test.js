@@ -25,7 +25,7 @@ describe('the SearchBar component', () => {
       const mockValue = {
         target: {value: 'test change'}
       }
-      wrapper.find('input').simulate('change', mockValue)
+      wrapper.find('.search-bar__input').simulate('change', mockValue)
       expect(wrapper.instance().state.searchTerm).toBe(mockValue.target.value)
     })
   })
@@ -40,12 +40,12 @@ describe('the SearchBar component', () => {
     })
 
     it('should not call onSubmitSearch if Enter key is not pressed', () => {
-      wrapper.find('input').simulate('keypress', {key: 'a'})
+      wrapper.find('.search-bar__input').simulate('keypress', {key: 'a'})
       expect(onSubmitSearchMock).not.toHaveBeenCalled()
     })
 
     it('should call onSubmitSearch if Enter key is pressed', () => {
-      wrapper.find('input').simulate('keypress', {key: 'Enter'})
+      wrapper.find('.search-bar__input').simulate('keypress', {key: 'Enter'})
       expect(onSubmitSearchMock).toHaveBeenCalled()
     })
   })

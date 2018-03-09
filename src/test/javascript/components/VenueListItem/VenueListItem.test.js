@@ -27,7 +27,7 @@ describe('the VenueListItem component', () => {
 
   describe('VenueListItem onclick', () => {
     it('should call the onVenueSelectMock function when an li is clicked', () => {
-      wrapper.find('li').simulate('click')
+      wrapper.find('.venues-list__item').simulate('click')
       expect(onVenueSelectMock).toHaveBeenCalledTimes(1)
     })
   })
