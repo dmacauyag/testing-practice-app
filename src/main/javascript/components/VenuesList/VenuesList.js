@@ -1,5 +1,4 @@
-import { List } from 'material-ui/List'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import '../../../resources/styles/components/VenuesList/VenuesList.css'
 import React from 'react'
 import VenueListItem from '../VenueListItem/VenueListItem'
 
@@ -15,13 +14,11 @@ const VenuesList = (props) => {
   })
 
   return (
-    <MuiThemeProvider>
-      <div className="venues-list">
-        <List className="venues-list__group">
-          {venueItems}
-        </List>
-      </div>
-    </MuiThemeProvider>
+    <div className="venues-list">
+      <ul className="venues-list__group">
+        {venueItems}
+      </ul>
+    </div>
   )
 }
 

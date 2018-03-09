@@ -1,16 +1,14 @@
-import { ListItem } from 'material-ui/List'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import '../../../resources/styles/components/VenueListItem/VenueListItem.css'
 import React from 'react'
 
 const VenueListItem = ({venue, onVenueSelect}) => {
   return (
-    <MuiThemeProvider>
-      <ListItem
-        className='venues-list__item'
-        onClick={() => onVenueSelect(venue.id)} >
-        {venue.name}
-      </ListItem>
-    </MuiThemeProvider>
+    <li
+      className='venues-list__item'
+      onClick={() => onVenueSelect(venue.id)}
+    >
+      <span className="venues-list__item-name">{venue.name}</span>
+    </li>
   )
 }
 
