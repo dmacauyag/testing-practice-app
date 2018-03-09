@@ -1,6 +1,4 @@
-import {Card, CardActions, CardMedia, CardTitle, CardText} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import '../../../resources/styles/components/VenueListDetail/VenueListDetail.css'
 import React from 'react'
 
 const VenueListDetail = ({venue}) => {
@@ -23,24 +21,29 @@ const VenueListDetail = ({venue}) => {
   const venueUrlButtonLabel = `Visit ${venueName}`
 
   return (
-    <MuiThemeProvider>
-      <div className="venue-list-detail">
-        <Card>
-          <CardMedia>
-            <img src={venueImageUrl} alt={venueName} />
-          </CardMedia>
-          <CardTitle title={venueName} subtitle={venueAddress} />
-          <CardText>{venueDescription}</CardText>
-          <CardActions>
-            <FlatButton
-              label={venueUrlButtonLabel}
-              primary={true}
-              href={venueUrl}
-            />
-          </CardActions>
-        </Card>
+    <div className="venue-list-detail">
+      <div className="venue-list-detail__card">
+        <div className="venue-list-detail__media">
+          <img className="venue-list-detail__image" src={venueImageUrl} alt={venueName} />
+        </div>
+        <div className="venue-list-detail__text">
+          <span className="venue-list-detail__text-title">{venueName}</span>
+          <span className="venue-list-detail__text-address">{venueAddress}</span>
+        </div>
+        <div className="venue-list-detail__description">
+          {venueDescription}
+        </div>
+        <div className="venue-list-detail__actions">
+          <a
+            className="venue-list-detail__actions-button"
+            href={venueUrl}
+            target="_blank"
+          >
+            {venueUrlButtonLabel}
+          </a>
+        </div>
       </div>
-    </MuiThemeProvider>
+    </div>
   )
 }
 
