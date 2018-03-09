@@ -1,6 +1,5 @@
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import '../../../resources/styles/components/SearchBar/SearchBar.css'
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
 
 class SearchBar extends Component {
   constructor(props) {
@@ -15,17 +14,15 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <div className="search-bar">
-          <TextField
-            id="search-bar__text-field"
-            hintText="Search for nearby venues"
-            value = {this.state.searchTerm}
-            onChange = {event => this.handleInputChange(event)}
-            onKeyPress = {event => this.handleKeyPress(event)}
-          />
-        </div>
-      </MuiThemeProvider>
+      <div className="search-bar">
+        <input
+          className="search-bar__input"
+          placeholder="Search for nearby venues"
+          value = {this.state.searchTerm}
+          onChange = {event => this.handleInputChange(event)}
+          onKeyPress = {event => this.handleKeyPress(event)}
+        />
+      </div>
     )
   }
 

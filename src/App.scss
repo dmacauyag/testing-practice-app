@@ -1,40 +1,48 @@
 .App {
-  text-align: center; }
+  text-align: center;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
+  height: 80px;
+}
 
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
-  color: white; }
+  color: white;
+}
 
 .App-title {
-  font-size: 1.5em; }
+  font-size: 1.5em;
+}
 
 .App-intro {
-  font-size: large; }
+  font-size: large;
+}
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 .venue-list-detail {
   max-width: 75%;
-  margin: 16px auto; }
+  margin: 16px auto;
+}
 
 .venues-list {
-  margin: 0 16px; }
+  margin: 0 16px;
+}
 
 .spinner {
   width: 40px;
   height: 40px;
+
   position: relative;
-  margin: 100px auto; }
+  margin: 100px auto;
+}
 
 .double-bounce1, .double-bounce2 {
   width: 100%;
@@ -45,23 +53,27 @@
   position: absolute;
   top: 0;
   left: 0;
+
   -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
-  animation: sk-bounce 2.0s infinite ease-in-out; }
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
 
 .double-bounce2 {
   -webkit-animation-delay: -1.0s;
-  animation-delay: -1.0s; }
+  animation-delay: -1.0s;
+}
 
 @-webkit-keyframes sk-bounce {
-  0%, 100% {
-    -webkit-transform: scale(0); }
-  50% {
-    -webkit-transform: scale(1); } }
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
 
 @keyframes sk-bounce {
   0%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0); }
-  50% {
-    transform: scale(1);
-    -webkit-transform: scale(1); } }
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
