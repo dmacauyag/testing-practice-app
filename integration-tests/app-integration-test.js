@@ -24,6 +24,11 @@ module.exports = {
       browser.assert.containsText('.venues-list__item-name', result.value)
     })
 
+    browser.expect.element('.venue-list-detail__media').to.be.visible
+    browser.expect.element('.venue-list-detail__text').to.be.visible
+    browser.expect.element('.venue-list-detail__description').to.be.visible
+    browser.expect.element('.venue-list-detail__actions').to.be.visible
+
     browser.end()
   }
 }
